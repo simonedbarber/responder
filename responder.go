@@ -1,6 +1,6 @@
 // Package responder respond differently according to request's accepted mime type
 //
-// Github: http://github.com/qor/responder
+// Github: http://github.com/simonedbarber/responder
 package responder
 
 import (
@@ -11,7 +11,8 @@ import (
 )
 
 // Register mime type and format
-//     responder.Register("application/json", "json")
+//
+//	responder.Register("application/json", "json")
 func Register(mimeType string, format string) {
 	mime.AddExtensionType("."+strings.TrimPrefix(format, "."), mimeType)
 }
@@ -33,11 +34,12 @@ type Responder struct {
 }
 
 // With could be used to register response handler for mime type formats, the formats could be string or []string
-//     responder.With("html", func() {
-//       writer.Write([]byte("this is a html request"))
-//     }).With([]string{"json", "xml"}, func() {
-//       writer.Write([]byte("this is a json or xml request"))
-//     })
+//
+//	responder.With("html", func() {
+//	  writer.Write([]byte("this is a html request"))
+//	}).With([]string{"json", "xml"}, func() {
+//	  writer.Write([]byte("this is a json or xml request"))
+//	})
 func With(formats interface{}, fc func()) *Responder {
 	rep := &Responder{responds: map[string]func(){}}
 	return rep.With(formats, fc)

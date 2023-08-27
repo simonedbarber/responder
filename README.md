@@ -2,7 +2,7 @@
 
 Responder provides a means to respond differently according to a request's accepted mime type.
 
-[![GoDoc](https://godoc.org/github.com/qor/responder?status.svg)](https://godoc.org/github.com/qor/responder)
+[![GoDoc](https://godoc.org/github.com/simonedbarber/responder?status.svg)](https://godoc.org/github.com/simonedbarber/responder)
 [![Build Status](https://travis-ci.com/qor/responder.svg?branch=master)](https://travis-ci.com/qor/responder)
 
 ## Usage
@@ -10,14 +10,14 @@ Responder provides a means to respond differently according to a request's accep
 ### Register mime type
 
 ```go
-import "github.com/qor/responder"
+import "github.com/simonedbarber/responder"
 
 responder.Register("text/html", "html")
 responder.Register("application/json", "json")
 responder.Register("application/xml", "xml")
 ```
 
-[Responder](https://github.com/qor/responder) has the above 3 mime types registered by default. You can register more types with the `Register` function, which accepts 2 parameters:
+[Responder](https://github.com/simonedbarber/responder) has the above 3 mime types registered by default. You can register more types with the `Register` function, which accepts 2 parameters:
 
 1. The mime type, like `text/html`
 2. The format of the mime type, like `html`
@@ -34,7 +34,7 @@ func handler(writer http.ResponseWriter, request *http.Request) {
 })
 ```
 
-The first `html` in the example will be the default response type if [Responder](https://github.com/qor/responder) cannot find a corresponding mime type.
+The first `html` in the example will be the default response type if [Responder](https://github.com/simonedbarber/responder) cannot find a corresponding mime type.
 
 ## License
 
